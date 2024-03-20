@@ -8,7 +8,7 @@ const { getBackup } = require("./backup.js");
 const video = require("./video.js");
 const path = require("path");
 const fs = require("fs");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3005;
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -62,7 +62,7 @@ cron.schedule(
 
 app.use("/api", mainRouter);
 app.use("/uploads", express.static("uploads"));
-app.listen(process.env.PORT || 3001, () =>
+app.listen(process.env.PORT || 3005, () =>
   console.log(`server is running ${PORT}`)
 );
 
