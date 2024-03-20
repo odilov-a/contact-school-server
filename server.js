@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const cron = require("node-cron");
 const mainRouter = require("./routes/router.js");
-const { getBackup } = require("./backup.js");
+require("./backup.js");
 const video = require("./video.js");
 const path = require("path");
 const fs = require("fs");
