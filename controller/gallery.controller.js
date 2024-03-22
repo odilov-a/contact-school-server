@@ -67,8 +67,8 @@ exports.updateGallery = async (req, res) => {
 
 exports.deleteGallery = async (req, res) => {
   try {
-    const deletedGallery = await Galleries.findOneAndDelete(
-      req.params.galleryId
+    const deletedGallery = await Galleries.findByIdAndDelete(
+      req.params.id
     );
     if (!deletedGallery) {
       return res.status(404).json({ message: "Gallery not found" });
