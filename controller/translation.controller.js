@@ -59,7 +59,7 @@ exports.search = async (req, res) => {
 exports.create = async (req, res) => {
   try {
     const { lang } = req.params;
-    const message = Object.keys(req.body)[0];
+    const message = Object.values(req.body)[0];
     const text = Object.values(req.body)[0];
     const findMessage = await Translations.findOne({
       message: message,
@@ -85,19 +85,15 @@ exports.update = async (req, res) => {
   try {
     const { lang, translation } = req.body;
     const { id } = req.params;
-    if(!id) {
-      res.status(404).json({
-        message: "Id is not defined"
-      })
-    }
     const findTranslation = await Translations.findById(id);
     if (!findTranslation) {
       return res.json("Translation not found");
     }
     findTranslation[lang] = translation;
     await findTranslation.save();
-    return findTranslation;
+    res.json(findTranslation);
   } catch (err) {
+    console.log(err);
     return res.json(err);
   }
 };
