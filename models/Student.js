@@ -5,38 +5,27 @@ const StudentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    subject: {
-      type: String,
+    isIelts: {
+      type: Boolean,
+      default: false,
       required: true,
     },
-    achievements: {
-      type: {
-        listening: {
-          type: Number,
-          default: 0,
-        },
-        reading: {
-          type: Number,
-          default: 0,
-        },
-        writing: {
-          type: Number,
-          default: 0,
-        },
-        speaking: {
-          type: Number,
-          default: 0,
-        },
-        overall: {
-          type: Number,
-          default: 0,
-        },
-      },
-      default: {},
+    ielts: {
+      type: Array,
+    },
+    score: {
+      type: Array,
     },
     image: {
-      type: Array, 
-      required:true,
+      type: Array,
+      required: true,
+    },
+    image02: {
+      type: Array,
+      required: true,
+    },
+    image03: {
+      type: Array,
     },
   },
   { timestamps: true }

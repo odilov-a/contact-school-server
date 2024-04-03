@@ -39,6 +39,8 @@ exports.getStudentById = async (req, res) => {
 exports.createStudent = async (req, res) => {
   try {
     req.body.image = req.images;
+    req.body.image02 = req.image02;
+    req.body.image03 = req.image03;
     const newStudent = await Students.create(req.body);
     return res.json({ data: newStudent });
   } catch (err) {
@@ -56,11 +58,18 @@ exports.updateStudent = async (req, res) => {
       return res.status(404).json({ message: "Student not found" });
     }
     req.body.image = req.images;
+    req.body.image02 = req.image02;
+    req.body.image03 = req.image03;
     const updatedStudent = await Students.findByIdAndUpdate(
       req.params.studentId,
       {
-        achievements: req.body.achievements,
+        name: req.body.name,
+        isIelts: req.body.isIelts,
+        ielts: req.body.ielts,
+        score: req.body.score,
         image: req.body.image,
+        image02: req.body.image02,
+        image03: req.body.image03,
         ...req.body,
       },
       { new: true }

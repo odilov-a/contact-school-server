@@ -1,4 +1,4 @@
-const Programs = require("../models/program");
+const Programs = require("../models/Program");
 
 exports.getAllPrograms = async (req, res) => {
   try {
